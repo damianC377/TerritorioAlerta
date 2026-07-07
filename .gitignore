@@ -1,1 +1,4 @@
+# Base de datos local
 **/Base_datos/
+*.db
+*.sqlite
