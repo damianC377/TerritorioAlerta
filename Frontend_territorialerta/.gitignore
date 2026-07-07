@@ -1,0 +1,6 @@
+# FRONTEND (Vite / React de Figma Make)
+# ==========================================
+node_modules/
+**/dist/
+**/dist-ssr/
+**/.env*

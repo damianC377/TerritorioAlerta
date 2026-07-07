@@ -1,23 +1,23 @@
 # FRONTEND (Vite / React de Figma Make)
 # ==========================================
-Frontend_territorialerta/node_modules/
-Frontend_territorialerta/dist/
-Frontend_territorialerta/dist-ssr/
-Frontend_territorialerta/.env*
+node_modules/
+**/dist/
+**/dist-ssr/
+**/.env*
 
 # ==========================================
 # BACKEND (Java / Maven de Spring Boot)
 # ==========================================
 # Ocultar tu archivo nuevo con contraseñas reales
-Backend_territorialerta/territorialerta/src/main/resources/application-local.properties
+**/src/main/resources/application-local.properties
 
 # Archivos temporales de compilación pesados
-Backend_territorialerta/territorialerta/target/
-Backend_territorialerta/territorialerta/build/
-Backend_territorialerta/territorialerta/.mvn/
+**/target/
+**/build/
+**/.mvn/
 
 # Archivos de ayuda y documentación local
-Backend_territorialerta/territorialerta/HELP.md
+**/HELP.md
 
 # ==========================================
 # EDITORES DE CÓDIGO (VS Code, IntelliJ)
