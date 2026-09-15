@@ -2,3 +2,4 @@
 **/Base_datos/
 *.db
 *.sqlite
+**/terraform/
