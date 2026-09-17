@@ -1,4 +1,4 @@
-package TerritorioAlerta.domain.Service;
+package TerritorioAlerta.domain.service;
 
 public class JalService {
 
