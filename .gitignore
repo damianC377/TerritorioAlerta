@@ -1,1 +1,9 @@
+#ignorar archivos de .vscode
+**/.vscode/
+
+# Base de datos local
 **/Base_datos/
+*.db
+*.sqlite
+**/terraform/
+
