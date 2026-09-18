@@ -1,23 +1,34 @@
 package TerritorioAlerta.adapter.in.validator;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 
-import TerritorioAlerta.application.exception.InputsException;
 import TerritorioAlerta.domain.model.Enums.Status;
 import TerritorioAlerta.domain.model.Enums.TypeReport;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AccidentReportValidator extends SimpleValidator {
 
-    public LocalDate accidentDateValidator(String date) throws Exception {
-        return dateValidator("Fecha del accidente: ", date);
+    public long idUserValidator(String value) throws Exception {
+        return longValidator("el ID del usuario que reporta", value);
     }
 
-    public TypeReport typeReportValidator(String typeReport) throws Exception {
-        String normalizedType = stringValidator("Tipo de reporte: ", typeReport).trim();
+    public TypeReport typeReportValidator(String value) throws Exception {
+        stringValidator("el tipo de reporte", value);
         try {
-            return TypeReport.valueOf(normalizedType);
+            return TypeReport.valueOf(value.trim());
         } catch (IllegalArgumentException e) {
-            throw new InputsException("Tipo de reporte no válido: " + normalizedType);
+            throw new Exception("El tipo de reporte debe ser uno de: road_accident, natural_disaster, solid_waste");
+        }
+    }
+
+    public LocalDateTime dateValidator(String value) throws Exception {
+        stringValidator("la fecha del incidente", value);
+        try {
+            return LocalDateTime.parse(value);
+        } catch (DateTimeParseException e) {
+            throw new Exception("La fecha del incidente debe tener formato ISO-8601, ej: 2025-03-14T10:15:30");
         }
     }
 
@@ -41,12 +52,12 @@ public class AccidentReportValidator extends SimpleValidator {
         return stringValidator("Descripción: ", description);
     }
 
-    public Status statusValidator(String status) throws Exception {
-        String normalizedStatus = stringValidator("Estado: ", status).trim();
+    public Status statusValidator(String value) throws Exception {
+        stringValidator("el nivel de gravedad (status)", value);
         try {
-            return Status.valueOf(normalizedStatus);
+            return Status.valueOf(value.trim());
         } catch (IllegalArgumentException e) {
-            throw new InputsException("Estado no válido: " + normalizedStatus);
+            throw new Exception("El status debe ser uno de: Minor, Moderate, Severe");
         }
     }
 

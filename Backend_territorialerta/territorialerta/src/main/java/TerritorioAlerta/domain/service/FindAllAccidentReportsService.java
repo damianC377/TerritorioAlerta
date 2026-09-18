@@ -2,16 +2,17 @@ package TerritorioAlerta.domain.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import TerritorioAlerta.domain.model.Accident_report;
 import TerritorioAlerta.domain.port.Accident_reportPort;
 
+@Service
 public class FindAllAccidentReportsService {
 
-    private final Accident_reportPort accidentReportPort;
-
-    public FindAllAccidentReportsService(Accident_reportPort accidentReportPort) {
-        this.accidentReportPort = accidentReportPort;
-    }
+    @Autowired
+    private Accident_reportPort accidentReportPort;
 
     public List<Accident_report> findAllAccidentReports() {
         return accidentReportPort.findAll();

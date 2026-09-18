@@ -1,10 +1,15 @@
 package TerritorioAlerta.adapter.in.builder;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import TerritorioAlerta.adapter.in.validator.UserValidator;
 import TerritorioAlerta.domain.model.User;
 
+@Component
 public class UserBuilder {
 
+    @Autowired
     private UserValidator userValidator;
     
     public User buildUser(String name, String lastname, String email, String password, String commune, String neighborhood) throws Exception {

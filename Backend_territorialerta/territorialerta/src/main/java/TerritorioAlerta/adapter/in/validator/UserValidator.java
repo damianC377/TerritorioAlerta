@@ -1,5 +1,8 @@
 package TerritorioAlerta.adapter.in.validator;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserValidator extends SimpleValidator{
     
     public String nameValidator(String name) throws Exception {

@@ -1,15 +1,16 @@
 package TerritorioAlerta.domain.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import TerritorioAlerta.domain.model.User;
 import TerritorioAlerta.domain.port.UserPort;
 
+@Service
 public class FindByIdUserService {
 
-    private final UserPort userPort;
-
-    public FindByIdUserService(UserPort userPort) {
-        this.userPort = userPort;
-    }
+    @Autowired
+    private UserPort userPort;
 
     public User findByIdUser(Long userId) throws Exception {
         User user = userPort.findById(userId);

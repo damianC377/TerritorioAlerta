@@ -5,7 +5,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 import TerritorioAlerta.application.exception.InputsException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SimpleValidator {
  public String stringValidator(String element, String value) throws Exception {
         if (value == null || value.equals("")) {
