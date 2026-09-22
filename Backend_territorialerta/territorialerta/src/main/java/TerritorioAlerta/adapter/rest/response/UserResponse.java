@@ -2,6 +2,7 @@ package TerritorioAlerta.adapter.rest.response;
 
 import java.time.LocalDateTime;
 
+/** Representación REST pública de un usuario. */
 public class UserResponse {
 
     private Long id_user;

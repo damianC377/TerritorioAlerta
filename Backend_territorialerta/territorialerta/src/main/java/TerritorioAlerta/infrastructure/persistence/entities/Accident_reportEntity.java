@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "accident_reports")
+/** Entidad JPA que persiste reportes en la tabla accident_reports. */
 public class Accident_reportEntity {
     
     @Id

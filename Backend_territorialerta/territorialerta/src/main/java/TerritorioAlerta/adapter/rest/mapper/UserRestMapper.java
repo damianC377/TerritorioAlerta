@@ -1,6 +1,5 @@
 package TerritorioAlerta.adapter.rest.mapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import TerritorioAlerta.adapter.in.builder.UserBuilder;
@@ -9,11 +8,17 @@ import TerritorioAlerta.adapter.rest.response.UserResponse;
 import TerritorioAlerta.domain.model.User; 
 
 @Component
+/** Convierte entre solicitudes/respuestas REST y usuarios de dominio. */
 public class UserRestMapper {
 
-    @Autowired
-    private UserBuilder userBuilder;
+    private final UserBuilder userBuilder;
 
+    /** Construye el mapper con el builder de usuarios. */
+    public UserRestMapper(UserBuilder userBuilder) {
+        this.userBuilder = userBuilder;
+    }
+
+    /** Convierte una solicitud HTTP validada en un usuario de dominio. */
     public User toDomain(UserRequest req) throws Exception {
         return userBuilder.buildUser(
                 req.getName(),
@@ -25,6 +30,7 @@ public class UserRestMapper {
         );
     }
 
+    /** Convierte un usuario de dominio en la respuesta pública del API. */
     public UserResponse toResponse(User user){
 
         UserResponse res = new UserResponse();

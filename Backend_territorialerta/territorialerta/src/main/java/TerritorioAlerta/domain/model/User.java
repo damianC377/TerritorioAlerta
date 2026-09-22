@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import TerritorioAlerta.domain.model.Enums.Role;
 
+/** Modelo de dominio que representa a un ciudadano o administrador. */
 public class User {
     private Long id_user;
     private String name;

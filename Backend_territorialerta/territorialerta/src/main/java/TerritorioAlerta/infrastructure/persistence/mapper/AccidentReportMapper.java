@@ -5,8 +5,10 @@ import TerritorioAlerta.domain.model.Accident_report;
 import TerritorioAlerta.domain.model.Enums.Status;
 import TerritorioAlerta.domain.model.Enums.TypeReport;
 
+/** Convierte reportes entre el modelo de dominio y la entidad JPA. */
 public class AccidentReportMapper {
 
+    /** Convierte un reporte de dominio a una entidad persistible. */
     public static Accident_reportEntity toEntity(Accident_report domain) {
         if (domain == null) {
             return null;
@@ -34,6 +36,7 @@ public class AccidentReportMapper {
         return entity;
     }
 
+    /** Convierte una entidad JPA a un reporte de dominio. */
     public static Accident_report toDomain(Accident_reportEntity entity) {
         if (entity == null) return null;
 

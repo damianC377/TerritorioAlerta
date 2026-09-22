@@ -1,5 +1,6 @@
 package TerritorioAlerta.adapter.rest.request;
 
+/** Datos recibidos por el endpoint de registro de usuarios. */
 public class UserRequest {
     
     private String name;

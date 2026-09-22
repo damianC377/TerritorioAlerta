@@ -3,8 +3,10 @@ package TerritorioAlerta.adapter.in.validator;
 import org.springframework.stereotype.Component;
 
 @Component
+/** Valida los campos específicos requeridos para registrar usuarios. */
 public class UserValidator extends SimpleValidator{
     
+    /** Valida la longitud y presencia del nombre. */
     public String nameValidator(String name) throws Exception {
     
         if (name.length() < 3 || name.length() > 50) {
@@ -14,6 +16,7 @@ public class UserValidator extends SimpleValidator{
 
     }
 
+    /** Valida la longitud y presencia del apellido. */
     public String lastNameValidator(String lastName) throws Exception {
             if (lastName.length() < 3 || lastName.length() > 50) {
                 return "El apellido debe tener entre 3 y 50 caracteres.";
@@ -21,6 +24,7 @@ public class UserValidator extends SimpleValidator{
             return stringValidator("Apellido de la persona: ", lastName);
     }
 
+    /** Valida el formato y normaliza el correo electrónico. */
     public String emailValidator(String email) throws Exception {
        stringValidator("Correo electrónico: ", email);
        if (!email.matches("^[\\w.+-]+@[\\w-]+\\.[a-zA-Z]{2,}$")) {
@@ -29,6 +33,7 @@ public class UserValidator extends SimpleValidator{
        return email.trim().toLowerCase();
     }
 
+    /** Valida que la contraseña tenga una longitud permitida. */
     public String passwordValidator(String password) throws Exception {
 
         stringValidator("Contraseña: ", password);
@@ -39,10 +44,12 @@ public class UserValidator extends SimpleValidator{
         return password;
     }
 
+    /** Valida y devuelve la comuna del usuario. */
     public String communeValidator(String commune) throws Exception {
         return stringValidator("Comuna: ", commune);
     }
 
+    /** Valida y devuelve el barrio del usuario. */
     public String neighborhoodValidator(String neighborhood) throws Exception {
         return stringValidator("Barrio: ", neighborhood);
     }

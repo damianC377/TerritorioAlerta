@@ -1,5 +1,6 @@
 package TerritorioAlerta.adapter.rest.request;
 
+/** Datos recibidos por el endpoint de creación de reportes. */
 public class Accident_reportRequest {
 
     private String id_user;

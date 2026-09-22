@@ -1,17 +1,22 @@
 package TerritorioAlerta.adapter.in.builder;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import TerritorioAlerta.adapter.in.validator.UserValidator;
 import TerritorioAlerta.domain.model.User;
 
 @Component
+/** Construye usuarios de dominio usando validadores de entrada. */
 public class UserBuilder {
 
-    @Autowired
-    private UserValidator userValidator;
+    private final UserValidator userValidator;
+
+    /** Construye el builder con el validador de usuarios. */
+    public UserBuilder(UserValidator userValidator) {
+        this.userValidator = userValidator;
+    }
     
+    /** Valida y transforma los datos de entrada en un usuario de dominio. */
     public User buildUser(String name, String lastname, String email, String password, String commune, String neighborhood) throws Exception {
         
         User user = new User();

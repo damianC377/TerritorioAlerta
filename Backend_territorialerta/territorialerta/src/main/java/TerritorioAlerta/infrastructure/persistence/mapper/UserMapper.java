@@ -4,8 +4,10 @@ import TerritorioAlerta.domain.model.User;
 import TerritorioAlerta.domain.model.Enums.Role;
 import TerritorioAlerta.infrastructure.persistence.entities.UserEntity;
 
+/** Convierte usuarios entre el modelo de dominio y la entidad JPA. */
 public class UserMapper {
 
+    /** Convierte un usuario de dominio a una entidad persistible. */
     public static UserEntity toEntity(User user) {
         if (user == null) {
             return null;
@@ -28,6 +30,7 @@ public class UserMapper {
         return entity;
     }
 
+    /** Convierte una entidad JPA a un usuario de dominio. */
     public static User toDomain(UserEntity entity) {
         if (entity == null) {
             return null;

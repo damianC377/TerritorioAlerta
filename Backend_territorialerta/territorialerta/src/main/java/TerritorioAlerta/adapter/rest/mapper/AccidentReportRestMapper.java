@@ -1,6 +1,5 @@
 package TerritorioAlerta.adapter.rest.mapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import TerritorioAlerta.adapter.in.builder.AccidentReportBuilder;
@@ -9,11 +8,17 @@ import TerritorioAlerta.adapter.rest.response.AccidentReportResponse;
 import TerritorioAlerta.domain.model.Accident_report;
 
 @Component
+/** Convierte entre solicitudes/respuestas REST y reportes de dominio. */
 public class AccidentReportRestMapper {
 
-    @Autowired
-    private AccidentReportBuilder accidentReportBuilder;
+    private final AccidentReportBuilder accidentReportBuilder;
 
+    /** Construye el mapper con el builder de reportes. */
+    public AccidentReportRestMapper(AccidentReportBuilder accidentReportBuilder) {
+        this.accidentReportBuilder = accidentReportBuilder;
+    }
+
+    /** Convierte una solicitud HTTP en un reporte de dominio validado. */
     public Accident_report toDomain(Accident_reportRequest req) throws Exception {
         return accidentReportBuilder.buildAccidentReport(
                 req.getId_user(),
@@ -28,6 +33,7 @@ public class AccidentReportRestMapper {
         );
     }
 
+    /** Convierte un reporte de dominio en la respuesta pública del API. */
     public AccidentReportResponse toResponse(Accident_report accidentReport) {
         AccidentReportResponse res = new AccidentReportResponse();
         res.setId_accident_report(accidentReport.getId_accident_report());

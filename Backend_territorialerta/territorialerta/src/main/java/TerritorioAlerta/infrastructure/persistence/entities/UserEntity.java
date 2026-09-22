@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "users")
+/** Entidad JPA que persiste usuarios en la tabla users. */
 public class UserEntity {
     
     @Id

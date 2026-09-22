@@ -2,6 +2,7 @@ package TerritorioAlerta.adapter.rest.response;
 
 import java.time.LocalDateTime;
 
+/** Representación REST pública de un reporte de accidente. */
 public class AccidentReportResponse {
 
     private Long id_accident_report;

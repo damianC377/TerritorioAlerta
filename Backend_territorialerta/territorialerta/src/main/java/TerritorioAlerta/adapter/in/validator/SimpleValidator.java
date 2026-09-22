@@ -8,7 +8,9 @@ import TerritorioAlerta.application.exception.InputsException;
 import org.springframework.stereotype.Component;
 
 @Component
+/** Proporciona validaciones primitivas reutilizables para los datos de entrada. */
 public class SimpleValidator {
+ /** Rechaza valores nulos o vacíos y devuelve el texto válido. */
  public String stringValidator(String element, String value) throws Exception {
         if (value == null || value.equals("")) {
             throw new InputsException(element + " no puede tener un valor vacio o nulo");
@@ -16,6 +18,7 @@ public class SimpleValidator {
         return value;
     }
 
+    /** Convierte un texto a entero después de validar que no esté vacío. */
     public int integerValidator(String element, String value) throws Exception {
         stringValidator(element, value);
         try {
@@ -26,6 +29,7 @@ public class SimpleValidator {
         }
     }
 
+    /** Convierte un texto a long después de validar que no esté vacío. */
     public long longValidator(String element, String value) throws Exception {
         stringValidator(element, value);
         try {
@@ -35,6 +39,7 @@ public class SimpleValidator {
             throw new InputsException(element + " debe ser un valor numerico");
         }
     }
+    /** Convierte un texto a double después de validar que no esté vacío. */
     public double doubleValidator(String element, String value) throws Exception {
         stringValidator(element, value);
         try {
@@ -45,6 +50,7 @@ public class SimpleValidator {
         }
     }
 
+    /** Convierte una fecha con formato dd/MM/yyyy después de validarla. */
     public LocalDate dateValidator(String element, String value) throws Exception {
         if (value == null || value.isBlank()) {
         throw new InputsException(element + " no puede ser nulo ni vacío");
