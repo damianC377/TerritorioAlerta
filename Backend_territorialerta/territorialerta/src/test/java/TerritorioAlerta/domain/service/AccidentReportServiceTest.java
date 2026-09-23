@@ -19,6 +19,8 @@ import TerritorioAlerta.domain.model.User;
 import TerritorioAlerta.domain.port.Accident_reportPort;
 import TerritorioAlerta.domain.port.UserPort;
 
+
+
 /**
  * Prueba la regla de negocio de CreateAccidentReportService al crear reportes.
  * No se prueba una base de datos real: los Ports están simulados con Mockito.
@@ -64,5 +66,26 @@ class AccidentReportServiceTest {
         assertThrows(Exception.class, () -> accidentReportService.createAccidentReport(report));
 
         verify(accidentReportPort, never()).save(any());
+    }
+
+    // ⚠️ TEST INTENCIONALMENTE FALLIDO — ejercicio de aprendizaje.
+    // Este test afirma algo que el código NO hace, a propósito, para ver cómo
+    // se ve un ❌ en el runner de pruebas. El código de producción está bien;
+    // el error está en la aserción de este test, no en UserService/
+    // AccidentReportService. Se puede borrar este método cuando ya no se
+    // necesite para el ejercicio.
+    @Test
+    void crearReporte_usuarioExistente_pruebaFallidaAProposito() {
+        User user = new User();
+        user.setId_user(1L);
+
+        Accident_report report = new Accident_report();
+        report.setId_user(1L);
+        report.setId_accident_report(null);
+
+        lenient().when(userPort.findById(1L)).thenReturn(user);
+        when(accidentReportPort.save(report)).thenReturn(report);
+
+        assertThrows(Exception.class, () -> accidentReportService.createAccidentReport(report));
     }
 }
