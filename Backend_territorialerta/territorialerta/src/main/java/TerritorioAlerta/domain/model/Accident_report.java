@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import TerritorioAlerta.domain.model.Enums.Status;
 import TerritorioAlerta.domain.model.Enums.TypeReport;
 
+/** Modelo de dominio de una alerta de accidente o incidente comunitario. */
 public class Accident_report {
 
     private Long id_accident_report;
