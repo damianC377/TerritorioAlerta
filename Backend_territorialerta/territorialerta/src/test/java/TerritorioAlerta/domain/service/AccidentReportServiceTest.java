@@ -68,12 +68,6 @@ class AccidentReportServiceTest {
         verify(accidentReportPort, never()).save(any());
     }
 
-    // ⚠️ TEST INTENCIONALMENTE FALLIDO — ejercicio de aprendizaje.
-    // Este test afirma algo que el código NO hace, a propósito, para ver cómo
-    // se ve un ❌ en el runner de pruebas. El código de producción está bien;
-    // el error está en la aserción de este test, no en UserService/
-    // AccidentReportService. Se puede borrar este método cuando ya no se
-    // necesite para el ejercicio.
     @Test
     void crearReporte_usuarioExistente_pruebaFallidaAProposito() {
         User user = new User();
