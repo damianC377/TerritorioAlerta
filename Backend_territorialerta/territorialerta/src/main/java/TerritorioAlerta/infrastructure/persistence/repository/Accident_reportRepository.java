@@ -11,5 +11,5 @@ import TerritorioAlerta.infrastructure.persistence.entities.Accident_reportEntit
 /** Repositorio JPA para entidades de reportes de accidentes. */
 public interface Accident_reportRepository extends JpaRepository<Accident_reportEntity, Long> {
     /** Busca todas las entidades de reporte asociadas al usuario indicado. */
-    List<Accident_reportEntity> findAllByIdUser(Long id_user);
+    List<Accident_reportEntity> findAllByidUser(Long idUser);
 }

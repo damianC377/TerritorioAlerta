@@ -39,7 +39,7 @@ public class AccidentReportAdapter implements Accident_reportPort {
     @Override
     /** Obtiene y convierte los reportes asociados a un usuario. */
     public List<Accident_report> findByIdUserList(Long id_user) {
-    return accident_reportRepository.findAllByIdUser(id_user).stream()
+    return accident_reportRepository.findAllByidUser(id_user).stream()
             .map(AccidentReportMapper::toDomain)
             .collect(Collectors.toList());
     }

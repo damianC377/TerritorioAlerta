@@ -16,7 +16,7 @@ public class AccidentReportMapper {
 
         Accident_reportEntity entity = new Accident_reportEntity();
         entity.setId_accident_report(domain.getId_accident_report());
-        entity.setId_user(domain.getId_user());
+        entity.setIduser(domain.getId_user());
         entity.setDate(domain.getDate());
         entity.setCommune(domain.getCommune());
         entity.setNeighborhood(domain.getNeighborhood());
@@ -42,7 +42,7 @@ public class AccidentReportMapper {
 
         Accident_report domain = new Accident_report();
         domain.setId_accident_report(entity.getId_accident_report());
-        domain.setId_user(entity.getId_user());
+        domain.setId_user(entity.getIduser());
         domain.setDate(entity.getDate());
         domain.setCommune(entity.getCommune());
         domain.setNeighborhood(entity.getNeighborhood());

@@ -19,7 +19,7 @@ public class Accident_reportEntity {
     @Column(name = "id_accident_report")
     private Long id_accident_report;
     @Column(name = "id_user")
-    private Long id_user;
+    private Long idUser;
     @Column(name = "date")
     private LocalDateTime date;
     @Column(name = "type_report")
@@ -42,8 +42,8 @@ public class Accident_reportEntity {
     public Long getId_accident_report() { return id_accident_report; }
     public void setId_accident_report(Long id_accident_report) { this.id_accident_report = id_accident_report; }
 
-    public Long getId_user() { return id_user; }
-    public void setId_user(Long id_user) { this.id_user = id_user; }
+    public Long getIduser() { return idUser; }
+    public void setIduser(Long idUser) { this.idUser = idUser; }
 
     public LocalDateTime getDate() { return date; }
     public void setDate(LocalDateTime date) { this.date = date; }
