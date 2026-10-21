@@ -44,6 +44,7 @@ class FindByIdUserServiceUnitTest {
         assertSame(expected, result);
         // Comprueba que el servicio consultó el ID 14.
         verify(userPort).findById(14L);
+        System.out.println("Mockito: usuario con ID 14 encontrado satisfactoriamente.");
     }
 
     // Comprueba que otra búsqueda existente devuelve el ID correspondiente.
@@ -63,6 +64,7 @@ class FindByIdUserServiceUnitTest {
         assertEquals(27L, result.getId_user());
         // Comprueba que el puerto recibió el ID 27.
         verify(userPort).findById(27L);
+        System.out.println("Mockito: usuario con ID 27 encontrado satisfactoriamente.");
     }
 
     // Comprueba que un ID inexistente genera una excepción.
@@ -72,7 +74,8 @@ class FindByIdUserServiceUnitTest {
         when(userPort.findById(404L)).thenReturn(null);
 
         // Comprueba que el servicio informa que no encontró al usuario.
-        assertThrows(Exception.class, () -> findByIdUserService.findByIdUser(404L));
+        Exception error = assertThrows(Exception.class, () -> findByIdUserService.findByIdUser(404L));
+        System.out.println("Mensaje de error Mockito: " + error.getMessage());
         // Comprueba que la búsqueda se hizo usando el ID esperado.
         verify(userPort).findById(404L);
     }

@@ -44,6 +44,7 @@ class AdminServiceUnitTest {
         assertEquals(Role.Jal, user.getRole());
         // Comprueba que el servicio pidió guardar ese usuario.
         verify(userPort).save(user);
+        System.out.println("Mockito: rol Jal asignado y usuario guardado satisfactoriamente.");
     }
 
     // Comprueba que también se puede asignar el rol Analyst.
@@ -61,13 +62,15 @@ class AdminServiceUnitTest {
         assertEquals(Role.Analyst, user.getRole());
         // Comprueba que se delegó el guardado al puerto.
         verify(userPort).save(user);
+        System.out.println("Mockito: rol Analyst asignado y usuario guardado satisfactoriamente.");
     }
 
     // Comprueba que un usuario nulo produce un error sin intentar guardar.
     @Test
     void mockito_adminService_usuarioNulo_lanzaExcepcion() {
         // Comprueba que el servicio rechaza una entrada nula.
-        assertThrows(Exception.class, () -> adminService.changeUserRole(null, Role.User));
+        Exception error = assertThrows(Exception.class, () -> adminService.changeUserRole(null, Role.User));
+        System.out.println("Mensaje de error Mockito: " + error.getMessage());
         // Comprueba que la ruta inválida no llamó al guardado.
         verify(userPort, never()).save(any(User.class));
     }

@@ -43,6 +43,7 @@ class FindAllAccidentReportsServiceUnitTest {
         assertSame(expected, result);
         // Comprueba que el puerto recibió la consulta general.
         verify(accidentReportPort).findAll();
+        System.out.println("Mockito: listado de reportes obtenido satisfactoriamente.");
     }
 
     // Comprueba que el servicio puede devolver una lista vacía.
@@ -60,6 +61,7 @@ class FindAllAccidentReportsServiceUnitTest {
         assertSame(expected, result);
         // Comprueba que se realizó la consulta al puerto.
         verify(accidentReportPort).findAll();
+        System.out.println("Mockito: listado completado satisfactoriamente; no hay reportes.");
     }
 
     // Comprueba que un error del puerto se informa al llamador.
@@ -69,7 +71,9 @@ class FindAllAccidentReportsServiceUnitTest {
         when(accidentReportPort.findAll()).thenThrow(new IllegalStateException("Error de consulta"));
 
         // Comprueba que el servicio propaga la excepción simulada.
-        assertThrows(IllegalStateException.class, () -> findAllAccidentReportsService.findAllAccidentReports());
+        IllegalStateException error = assertThrows(IllegalStateException.class,
+            () -> findAllAccidentReportsService.findAllAccidentReports());
+        System.out.println("Mensaje de error Mockito: " + error.getMessage());
         // Comprueba que se intentó ejecutar la consulta.
         verify(accidentReportPort).findAll();
     }

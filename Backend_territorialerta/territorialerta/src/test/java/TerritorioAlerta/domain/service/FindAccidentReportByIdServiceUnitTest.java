@@ -44,6 +44,7 @@ class FindAccidentReportByIdServiceUnitTest {
         assertSame(expected, result);
         // Comprueba que la búsqueda se hizo con el ID correcto.
         verify(accidentReportPort).findById(25L);
+        System.out.println("Mockito: reporte con ID 25 encontrado satisfactoriamente.");
     }
 
     // Comprueba que otro ID existente también se recupera correctamente.
@@ -63,6 +64,7 @@ class FindAccidentReportByIdServiceUnitTest {
         assertEquals(36L, result.getId_accident_report());
         // Comprueba que el puerto recibió la consulta por ID 36.
         verify(accidentReportPort).findById(36L);
+        System.out.println("Mockito: reporte con ID 36 encontrado satisfactoriamente.");
     }
 
     // Comprueba que una búsqueda sin resultado provoca una excepción.
@@ -72,8 +74,9 @@ class FindAccidentReportByIdServiceUnitTest {
         when(accidentReportPort.findById(404L)).thenReturn(null);
 
         // Comprueba que el servicio informa el resultado inexistente.
-        assertThrows(Exception.class,
+        Exception error = assertThrows(Exception.class,
                 () -> findAccidentReportByIdService.findAccidentReportById(404L));
+        System.out.println("Mensaje de error Mockito: " + error.getMessage());
         // Comprueba que el servicio consultó el ID solicitado.
         verify(accidentReportPort).findById(404L);
     }

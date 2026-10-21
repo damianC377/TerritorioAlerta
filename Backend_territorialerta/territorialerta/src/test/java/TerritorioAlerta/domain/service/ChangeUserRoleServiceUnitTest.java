@@ -44,6 +44,7 @@ class ChangeUserRoleServiceUnitTest {
         assertEquals(Role.Analyst, user.getRole());
         // Comprueba que el usuario se envió al puerto para guardarse.
         verify(userPort).save(user);
+        System.out.println("Mockito: cambio al rol Analyst completado satisfactoriamente.");
     }
 
     // Comprueba que el servicio asigna y guarda el rol Admin.
@@ -61,13 +62,16 @@ class ChangeUserRoleServiceUnitTest {
         assertEquals(Role.Admin, user.getRole());
         // Comprueba que el servicio delegó el guardado.
         verify(userPort).save(user);
+        System.out.println("Mockito: cambio al rol Admin completado satisfactoriamente.");
     }
 
     // Comprueba que un usuario nulo se rechaza antes de guardar.
     @Test
     void mockito_cambiarRol_usuarioNulo_lanzaExcepcion() {
         // Comprueba que el servicio genera una excepción para usuario nulo.
-        assertThrows(Exception.class, () -> changeUserRoleService.changeUserRole(null, Role.Admin));
+        Exception error = assertThrows(Exception.class,
+            () -> changeUserRoleService.changeUserRole(null, Role.Admin));
+        System.out.println("Mensaje de error Mockito: " + error.getMessage());
         // Comprueba que ningún usuario fue enviado al puerto.
         verify(userPort, never()).save(any(User.class));
     }

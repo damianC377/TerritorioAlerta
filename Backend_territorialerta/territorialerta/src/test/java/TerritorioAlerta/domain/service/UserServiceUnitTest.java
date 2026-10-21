@@ -47,6 +47,7 @@ class UserServiceUnitTest {
         assertEquals(52L, saved.getId_user());
         // Comprueba que el servicio pidió guardar un usuario.
         verify(userPort).save(any(User.class));
+        System.out.println("Mockito: usuario con ID 52 creado satisfactoriamente.");
     }
 
     @Test
@@ -68,6 +69,7 @@ class UserServiceUnitTest {
         assertSame(user, saved);
         // Comprueba que el servicio pidió guardar un usuario.
         verify(userPort).save(any(User.class));
+        System.out.println("Mockito: usuario mock-user@example.test creado satisfactoriamente.");
     }
 
     // Verifica que un ID ya registrado provoca una excepción y no crea otro usuario.
@@ -85,6 +87,8 @@ class UserServiceUnitTest {
         // Comprueba que el servicio rechaza el ID repetido con una excepción explicativa.
         Exception error = org.junit.jupiter.api.Assertions.assertThrows(Exception.class,
                 () -> userService.createUser(user));
+        // Imprime el mensaje capturado para verlo en la salida de pruebas.
+        System.out.println("Mensaje de error Mockito: " + error.getMessage());
         // Comprueba el mensaje que explica el conflicto de identificador.
         assertEquals("El usuario con ID 73 ya existe.", error.getMessage());
         // Comprueba que un usuario duplicado nunca se envía a guardar.
@@ -104,6 +108,8 @@ class UserServiceUnitTest {
         // Comprueba que el servicio rechaza el correo repetido con una excepción.
         Exception error = org.junit.jupiter.api.Assertions.assertThrows(Exception.class,
                 () -> userService.createUser(user));
+        // Imprime el mensaje capturado para verlo en la salida de pruebas.
+        System.out.println("Mensaje de error Mockito: " + error.getMessage());
         // Comprueba el mensaje que identifica el correo en conflicto.
         assertEquals("Usuario con email correo-duplicado@example.test ya existe.", error.getMessage());
         // Comprueba que la ruta de error no intenta guardar al usuario duplicado.

@@ -46,6 +46,7 @@ class AccidentReportServiceUnitTest {
         assertSame(report, saved);
         // Comprueba que el servicio delegó el guardado al puerto.
         verify(accidentReportPort).save(report);
+        System.out.println("Mockito: reporte creado satisfactoriamente para el usuario 8.");
     }
 
     // Comprueba que un identificador de reporte libre se puede guardar.
@@ -71,6 +72,7 @@ class AccidentReportServiceUnitTest {
         verify(accidentReportPort).findById(63L);
         // Comprueba que el reporte válido sí fue guardado.
         verify(accidentReportPort).save(report);
+        System.out.println("Mockito: reporte con ID 63 creado satisfactoriamente.");
     }
 
     // Comprueba que el servicio rechaza reportes sin propietario.
@@ -80,7 +82,9 @@ class AccidentReportServiceUnitTest {
         Accident_report report = new Accident_report();
 
         // Comprueba que la regla de negocio genera una excepción.
-        assertThrows(Exception.class, () -> accidentReportService.createAccidentReport(report));
+        Exception error = assertThrows(Exception.class,
+            () -> accidentReportService.createAccidentReport(report));
+        System.out.println("Mensaje de error Mockito: " + error.getMessage());
         // Comprueba que el reporte inválido nunca se envía a guardar.
         verify(accidentReportPort, never()).save(any(Accident_report.class));
     }

@@ -43,6 +43,7 @@ class FindAccidentReportsByUserIdServiceUnitTest {
         assertSame(expected, result);
         // Comprueba que el ID se envió al puerto correctamente.
         verify(accidentReportPort).findByIdUserList(12L);
+        System.out.println("Mockito: reportes del usuario 12 consultados satisfactoriamente.");
     }
 
     // Comprueba que el servicio acepta una lista vacía.
@@ -60,6 +61,7 @@ class FindAccidentReportsByUserIdServiceUnitTest {
         assertSame(expected, result);
         // Comprueba que se consultó el ID 19.
         verify(accidentReportPort).findByIdUserList(19L);
+        System.out.println("Mockito: consulta del usuario 19 completada; no tiene reportes.");
     }
 
     // Comprueba que un error del puerto se propaga al llamador.
@@ -70,8 +72,9 @@ class FindAccidentReportsByUserIdServiceUnitTest {
                 .thenThrow(new IllegalStateException("Error de consulta"));
 
         // Comprueba que el servicio propaga el error configurado.
-        assertThrows(IllegalStateException.class,
+        IllegalStateException error = assertThrows(IllegalStateException.class,
                 () -> findAccidentReportsByUserIdService.findAccidentReportsByUserId(99L));
+        System.out.println("Mensaje de error Mockito: " + error.getMessage());
         // Comprueba que el servicio llegó a invocar el puerto.
         verify(accidentReportPort).findByIdUserList(99L);
     }
