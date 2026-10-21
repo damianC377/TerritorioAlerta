@@ -69,4 +69,44 @@ class UserServiceUnitTest {
         // Comprueba que el servicio pidió guardar un usuario.
         verify(userPort).save(any(User.class));
     }
+
+    // Verifica que un ID ya registrado provoca una excepción y no crea otro usuario.
+    @Test
+    void mockito_crearUsuario_idDuplicado_lanzaExcepcionYNoGuarda() {
+        // Prepara un usuario cuyo ID ya existe según el puerto simulado.
+        User user = new User();
+        // Define el ID que se reportará como duplicado.
+        user.setId_user(73L);
+        // Asigna un correo que no necesita consultarse porque el ID ya está ocupado.
+        user.setEmail("id-duplicado@example.test");
+        // Simula que la búsqueda por ID encuentra un usuario existente.
+        when(userPort.findById(73L)).thenReturn(new User());
+
+        // Comprueba que el servicio rechaza el ID repetido con una excepción explicativa.
+        Exception error = org.junit.jupiter.api.Assertions.assertThrows(Exception.class,
+                () -> userService.createUser(user));
+        // Comprueba el mensaje que explica el conflicto de identificador.
+        assertEquals("El usuario con ID 73 ya existe.", error.getMessage());
+        // Comprueba que un usuario duplicado nunca se envía a guardar.
+        org.mockito.Mockito.verify(userPort, org.mockito.Mockito.never()).save(any(User.class));
+    }
+
+    // Verifica que un correo ya registrado provoca una excepción y no crea otro usuario.
+    @Test
+    void mockito_crearUsuario_emailDuplicado_lanzaExcepcionYNoGuarda() {
+        // Prepara un usuario nuevo que intentará usar un correo existente.
+        User user = new User();
+        // Define el correo que el puerto reportará como duplicado.
+        user.setEmail("correo-duplicado@example.test");
+        // Simula que la búsqueda por correo encuentra otro usuario.
+        when(userPort.findByEmail("correo-duplicado@example.test")).thenReturn(new User());
+
+        // Comprueba que el servicio rechaza el correo repetido con una excepción.
+        Exception error = org.junit.jupiter.api.Assertions.assertThrows(Exception.class,
+                () -> userService.createUser(user));
+        // Comprueba el mensaje que identifica el correo en conflicto.
+        assertEquals("Usuario con email correo-duplicado@example.test ya existe.", error.getMessage());
+        // Comprueba que la ruta de error no intenta guardar al usuario duplicado.
+        org.mockito.Mockito.verify(userPort, org.mockito.Mockito.never()).save(any(User.class));
+    }
 }

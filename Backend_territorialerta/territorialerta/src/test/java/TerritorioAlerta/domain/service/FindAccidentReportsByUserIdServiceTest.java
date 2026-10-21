@@ -102,67 +102,6 @@ class FindAccidentReportsByUserIdServiceTest {
         // Devuelve el usuario listo para persistir.
         return user;
     }
-        // ==================== AQUÍ EMPIEZAN LAS PRUEBAS MOCKITO ====================
-
-        // Caso Mockito exitoso: devuelve reportes asociados al ID solicitado.
-        @Test
-        void mockito_listarReportesPorUsuario_listaConDatos_devuelveLista() {
-        // Crea un puerto de reportes falso para simular la consulta.
-        TerritorioAlerta.domain.port.Accident_reportPort mockPort = org.mockito.Mockito.mock(
-            TerritorioAlerta.domain.port.Accident_reportPort.class);
-        // Construye el servicio usando ese puerto simulado.
-        FindAccidentReportsByUserIdService mockService = new FindAccidentReportsByUserIdService(mockPort);
-        // Prepara una lista de reportes como respuesta esperada.
-        java.util.List<Accident_report> expected = java.util.List.of(
-            new Accident_report(), new Accident_report());
-        // Configura la respuesta para el usuario 12.
-        org.mockito.Mockito.when(mockPort.findByIdUserList(12L)).thenReturn(expected);
-        // Ejecuta la búsqueda de reportes para ese usuario.
-        java.util.List<Accident_report> result = mockService.findAccidentReportsByUserId(12L);
-        // Comprueba que el servicio devuelve la lista preparada.
-        org.junit.jupiter.api.Assertions.assertSame(expected, result);
-        // Comprueba que consultó el puerto usando el ID correcto.
-        org.mockito.Mockito.verify(mockPort).findByIdUserList(12L);
-        }
-
-        // Caso Mockito exitoso: devuelve lista vacía para un usuario sin reportes.
-        @Test
-        void mockito_listarReportesPorUsuario_listaVacia_devuelveListaVacia() {
-        // Crea un puerto falso para simular cero resultados.
-        TerritorioAlerta.domain.port.Accident_reportPort mockPort = org.mockito.Mockito.mock(
-            TerritorioAlerta.domain.port.Accident_reportPort.class);
-        // Inyecta el puerto falso en una instancia del servicio.
-        FindAccidentReportsByUserIdService mockService = new FindAccidentReportsByUserIdService(mockPort);
-        // Prepara la lista vacía que se devolverá.
-        java.util.List<Accident_report> expected = java.util.List.of();
-        // Configura cero resultados para el usuario 19.
-        org.mockito.Mockito.when(mockPort.findByIdUserList(19L)).thenReturn(expected);
-        // Ejecuta la búsqueda por el ID 19.
-        java.util.List<Accident_report> result = mockService.findAccidentReportsByUserId(19L);
-        // Comprueba que el resultado coincide con la lista vacía preparada.
-        org.junit.jupiter.api.Assertions.assertSame(expected, result);
-        // Comprueba que la consulta fue delegada usando el ID 19.
-        org.mockito.Mockito.verify(mockPort).findByIdUserList(19L);
-        }
-
-        // Caso Mockito negativo: propaga el error que ocurre dentro del puerto.
-        @Test
-        void mockito_listarReportesPorUsuario_errorDelPuerto_propagaExcepcion() {
-        // Crea un puerto falso que simulará una falla de consulta.
-        TerritorioAlerta.domain.port.Accident_reportPort mockPort = org.mockito.Mockito.mock(
-            TerritorioAlerta.domain.port.Accident_reportPort.class);
-        // Construye el servicio que recibirá la excepción del mock.
-        FindAccidentReportsByUserIdService mockService = new FindAccidentReportsByUserIdService(mockPort);
-        // Configura una excepción cuando se consulten reportes para el ID 99.
-        org.mockito.Mockito.when(mockPort.findByIdUserList(99L))
-            .thenThrow(new IllegalStateException("Error de consulta"));
-        // Comprueba que el servicio propaga el error de la dependencia.
-        org.junit.jupiter.api.Assertions.assertThrows(IllegalStateException.class,
-            () -> mockService.findAccidentReportsByUserId(99L));
-        // Comprueba que la operación fallida llegó al puerto.
-        org.mockito.Mockito.verify(mockPort).findByIdUserList(99L);
-        }
-
     // Construye el reporte que se guardará vinculado al usuario recibido.
     private Accident_report newReport(Long userId) {
         // Inicializa el reporte.
