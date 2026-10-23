@@ -8,6 +8,7 @@ class TerritorialertaApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("JUnit: el contexto de la aplicación cargó satisfactoriamente.");
 	}
 
 }

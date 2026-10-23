@@ -53,6 +53,7 @@ class FindAccidentReportsByUserIdServiceTest {
         assertEquals(2, reports.size());
         // Comprueba que cada resultado pertenece al usuario solicitado.
         assertTrue(reports.stream().allMatch(report -> user.getId_user().equals(report.getId_user())));
+        System.out.println("JUnit: reportes del usuario " + user.getId_user() + " consultados satisfactoriamente.");
     }
 
     // Comprueba que un único reporte también se filtra correctamente.
@@ -67,6 +68,7 @@ class FindAccidentReportsByUserIdServiceTest {
                 .findAccidentReportsByUserId(user.getId_user());
         // Comprueba que la lista contiene exactamente el reporte insertado.
         assertEquals(1, reports.size());
+        System.out.println("JUnit: se encontró el reporte del usuario satisfactoriamente.");
     }
 
     // Comprueba que un ID sin reportes produce una lista vacía, no un error.
@@ -77,6 +79,7 @@ class FindAccidentReportsByUserIdServiceTest {
                 .findAccidentReportsByUserId(Long.MAX_VALUE);
         // Confirma el comportamiento definido por el servicio para cero resultados.
         assertTrue(reports.isEmpty());
+        System.out.println("JUnit: no se encontraron reportes para el usuario consultado.");
     }
 
     // Prepara los datos válidos del usuario asociado a los reportes.

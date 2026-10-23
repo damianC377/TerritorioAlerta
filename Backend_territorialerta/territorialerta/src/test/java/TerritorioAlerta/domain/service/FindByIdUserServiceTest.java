@@ -40,6 +40,7 @@ class FindByIdUserServiceTest {
         assertEquals(saved.getId_user(), found.getId_user());
         // Comprueba que también se recuperó el email persistido.
         assertEquals(saved.getEmail(), found.getEmail());
+        System.out.println("JUnit: usuario encontrado satisfactoriamente con ID " + found.getId_user() + ".");
     }
 
     // Comprueba que puede recuperar correctamente otro usuario guardado.
@@ -55,6 +56,7 @@ class FindByIdUserServiceTest {
         assertEquals(expected.getId_user(), found.getId_user());
         // Comprueba que encontró el email correcto.
         assertEquals(expected.getEmail(), found.getEmail());
+        System.out.println("JUnit: se encontró correctamente el segundo usuario.");
     }
 
     // Comprueba el caso negativo para una clave que no existe.
@@ -62,6 +64,7 @@ class FindByIdUserServiceTest {
     void buscarUsuario_idInexistente_lanzaExcepcion() {
         // Confirma que el servicio lanza una excepción al no encontrar el ID.
         assertThrows(Exception.class, () -> findByIdUserService.findByIdUser(Long.MAX_VALUE));
+        System.out.println("JUnit: no se pudo encontrar el usuario solicitado.");
     }
 
     // Prepara un usuario realista con email único para guardar en la base.

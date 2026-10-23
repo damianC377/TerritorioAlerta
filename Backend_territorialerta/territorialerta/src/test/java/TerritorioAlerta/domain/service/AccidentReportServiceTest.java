@@ -47,6 +47,7 @@ class AccidentReportServiceTest {
         assertNotNull(saved.getId_accident_report());
         // Confirma que el reporte conserva la referencia al usuario.
         assertEquals(user.getId_user(), saved.getId_user());
+        System.out.println("JUnit: reporte creado satisfactoriamente para el usuario " + user.getId_user() + ".");
     }
 
     // Comprueba que dos reportes válidos reciben IDs diferentes.
@@ -64,6 +65,7 @@ class AccidentReportServiceTest {
         assertNotNull(second.getId_accident_report());
         // Comprueba que cada insert recibió una clave distinta.
         assertNotEquals(first.getId_accident_report(), second.getId_accident_report());
+        System.out.println("JUnit: se crearon dos reportes con IDs diferentes.");
     }
 
     // Comprueba la regla negativa cuando falta el ID del usuario.
@@ -73,6 +75,7 @@ class AccidentReportServiceTest {
         Accident_report report = newReport(null);
         // Confirma que el servicio rechaza el reporte antes de guardarlo.
         assertThrows(Exception.class, () -> accidentReportService.createAccidentReport(report));
+        System.out.println("JUnit: no se pudo crear el reporte porque falta el ID del usuario.");
     }
 
     // Construye un usuario válido con un email único para esta ejecución.

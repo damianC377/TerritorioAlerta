@@ -49,6 +49,7 @@ class FindAccidentReportByIdServiceTest {
         assertEquals(saved.getId_accident_report(), found.getId_accident_report());
         // Comprueba que se mantiene el usuario asociado.
         assertEquals(saved.getId_user(), found.getId_user());
+        System.out.println("JUnit: reporte encontrado satisfactoriamente con ID " + found.getId_accident_report() + ".");
     }
 
     // Comprueba que la búsqueda también identifica correctamente un segundo reporte.
@@ -65,6 +66,7 @@ class FindAccidentReportByIdServiceTest {
                 .findAccidentReportById(expected.getId_accident_report());
         // Confirma que el resultado corresponde al ID buscado.
         assertEquals(expected.getId_accident_report(), found.getId_accident_report());
+        System.out.println("JUnit: se encontró correctamente el segundo reporte.");
     }
 
     // Comprueba que el servicio informa cuando se solicita un reporte inexistente.
@@ -73,6 +75,7 @@ class FindAccidentReportByIdServiceTest {
         // Confirma que Long.MAX_VALUE no corresponde a un ID generado existente.
         assertThrows(Exception.class,
                 () -> findAccidentReportByIdService.findAccidentReportById(Long.MAX_VALUE));
+        System.out.println("JUnit: no se pudo encontrar el reporte solicitado.");
     }
 
     // Crea un usuario de prueba con datos completos y un email irrepetible.

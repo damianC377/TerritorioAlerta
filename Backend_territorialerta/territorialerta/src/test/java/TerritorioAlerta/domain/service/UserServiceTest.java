@@ -38,6 +38,7 @@ class UserServiceTest {
         assertNotNull(saved.getId_user());
         // Confirma que se persistió el email enviado.
         assertEquals(user.getEmail(), saved.getEmail());
+        System.out.println("JUnit: usuario creado satisfactoriamente.");
     }
 
     // Verifica que dos usuarios válidos reciben IDs distintos de PostgreSQL.
@@ -53,6 +54,7 @@ class UserServiceTest {
         assertNotNull(second.getId_user());
         // Comprueba que la base de datos no reutilizó el mismo ID.
         assertNotEquals(first.getId_user(), second.getId_user());
+        System.out.println("JUnit: dos usuarios creados satisfactoriamente.");
     }
 
     // Verifica que el servicio rechaza el email duplicado.
@@ -66,6 +68,7 @@ class UserServiceTest {
         duplicate.setEmail(original.getEmail());
         // Comprueba que el servicio rechaza la duplicación.
         assertThrows(Exception.class, () -> userService.createUser(duplicate));
+        System.out.println("JUnit: no se pudo crear el usuario porque el email ya existe.");
     }
 
     // Construye datos válidos para que cada prueba use un email irrepetible.

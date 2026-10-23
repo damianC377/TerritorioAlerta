@@ -44,6 +44,7 @@ class AdminServiceTest {
         User updated = findByIdUserService.findByIdUser(saved.getId_user());
         // Comprueba que PostgreSQL contiene el rol actualizado.
         assertEquals(Role.Jal, updated.getRole());
+        System.out.println("JUnit: rol Jal asignado al usuario satisfactoriamente.");
     }
 
     // Comprueba que el rol Analyst también se persiste por la ruta administrativa.
@@ -57,6 +58,7 @@ class AdminServiceTest {
         User updated = findByIdUserService.findByIdUser(saved.getId_user());
         // Comprueba el valor almacenado.
         assertEquals(Role.Analyst, updated.getRole());
+        System.out.println("JUnit: rol Analyst asignado al usuario satisfactoriamente.");
     }
 
     // Comprueba que el servicio rechaza la falta de usuario.
@@ -64,6 +66,7 @@ class AdminServiceTest {
     void cambiarRol_usuarioNulo_lanzaExcepcion() {
         // Confirma que pasar null produce una excepción de dominio.
         assertThrows(Exception.class, () -> adminService.changeUserRole(null, Role.User));
+        System.out.println("JUnit: no se pudo cambiar el rol porque el usuario es nulo.");
     }
 
     // Construye un usuario válido para persistir antes del cambio de rol.

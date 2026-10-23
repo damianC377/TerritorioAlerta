@@ -51,6 +51,7 @@ class FindAllAccidentReportsServiceTest {
         // Confirma que la lista incluye el reporte insertado por este test.
         assertTrue(reports.stream().anyMatch(report ->
                 saved.getId_accident_report().equals(report.getId_accident_report())));
+        System.out.println("JUnit: reporte incluido en el listado satisfactoriamente.");
     }
 
     // Comprueba que la lista general puede devolver varios reportes guardados.
@@ -68,6 +69,7 @@ class FindAllAccidentReportsServiceTest {
         assertNotNull(reports);
         // Confirma que están incluidos al menos los dos reportes insertados.
         assertTrue(reports.size() >= 2);
+        System.out.println("JUnit: listado de reportes obtenido satisfactoriamente.");
     }
 
     // El listado no define errores para entradas inválidas; estos helpers crean datos reales.

@@ -44,6 +44,7 @@ class ChangeUserRoleServiceTest {
         User updated = findByIdUserService.findByIdUser(saved.getId_user());
         // Comprueba que el nuevo rol quedó persistido.
         assertEquals(Role.Analyst, updated.getRole());
+        System.out.println("JUnit: rol Analyst asignado satisfactoriamente.");
     }
 
     // Comprueba que también persiste correctamente el rol de administrador.
@@ -57,6 +58,7 @@ class ChangeUserRoleServiceTest {
         User updated = findByIdUserService.findByIdUser(saved.getId_user());
         // Comprueba que el rol recuperado es el de administrador.
         assertEquals(Role.Admin, updated.getRole());
+        System.out.println("JUnit: rol Admin asignado satisfactoriamente.");
     }
 
     // Comprueba el camino negativo cuando no se proporciona un usuario.
@@ -64,6 +66,7 @@ class ChangeUserRoleServiceTest {
     void cambiarRol_usuarioNulo_lanzaExcepcion() {
         // Confirma que el servicio rechaza el usuario nulo.
         assertThrows(Exception.class, () -> changeUserRoleService.changeUserRole(null, Role.Admin));
+        System.out.println("JUnit: no se pudo cambiar el rol porque el usuario es nulo.");
     }
 
     // Prepara un usuario completo con un email único para la base de datos.
