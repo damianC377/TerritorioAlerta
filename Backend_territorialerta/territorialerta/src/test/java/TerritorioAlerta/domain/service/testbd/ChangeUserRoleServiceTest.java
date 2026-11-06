@@ -1,4 +1,4 @@
-package TerritorioAlerta.domain.service;
+package TerritorioAlerta.domain.service.testbd;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import TerritorioAlerta.domain.model.User;
 import TerritorioAlerta.domain.model.Enums.Role;
+import TerritorioAlerta.domain.service.ChangeUserRoleService;
+import TerritorioAlerta.domain.service.CreateUserService;
+import TerritorioAlerta.domain.service.FindByIdUserService;
 
 /** Pruebas JUnit del cambio de rol usando los servicios y PostgreSQL reales. */
 // Inicia Spring para utilizar el servicio y el repositorio reales.

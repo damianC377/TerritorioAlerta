@@ -1,4 +1,4 @@
-package TerritorioAlerta.domain.service;
+package TerritorioAlerta.domain.service.mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -16,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import TerritorioAlerta.domain.model.User;
 import TerritorioAlerta.domain.model.Enums.Role;
 import TerritorioAlerta.domain.port.UserPort;
+import TerritorioAlerta.domain.service.AdminService;
 
 // Activa Mockito para mantener estas pruebas completamente aisladas.
 @ExtendWith(MockitoExtension.class)

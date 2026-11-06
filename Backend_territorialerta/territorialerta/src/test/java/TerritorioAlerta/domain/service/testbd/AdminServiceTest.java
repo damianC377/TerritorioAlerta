@@ -1,4 +1,4 @@
-package TerritorioAlerta.domain.service;
+package TerritorioAlerta.domain.service.testbd;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import TerritorioAlerta.domain.model.User;
 import TerritorioAlerta.domain.model.Enums.Role;
+import TerritorioAlerta.domain.service.AdminService;
+import TerritorioAlerta.domain.service.CreateUserService;
+import TerritorioAlerta.domain.service.FindByIdUserService;
 
 /** Pruebas JUnit de las operaciones administrativas con PostgreSQL real. */
 // Inicia Spring y conecta el servicio a los repositorios de la aplicación.

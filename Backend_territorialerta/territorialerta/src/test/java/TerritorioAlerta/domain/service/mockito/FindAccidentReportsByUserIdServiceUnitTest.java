@@ -1,4 +1,4 @@
-package TerritorioAlerta.domain.service;
+package TerritorioAlerta.domain.service.mockito;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import TerritorioAlerta.domain.model.Accident_report;
 import TerritorioAlerta.domain.port.Accident_reportPort;
+import TerritorioAlerta.domain.service.FindAccidentReportsByUserIdService;
 
 // Inicializa Mockito sin crear contexto de Spring ni conexión de base de datos.
 @ExtendWith(MockitoExtension.class)

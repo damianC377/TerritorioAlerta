@@ -1,4 +1,4 @@
-package TerritorioAlerta.domain.service;
+package TerritorioAlerta.domain.service.mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import TerritorioAlerta.domain.model.User;
 import TerritorioAlerta.domain.port.UserPort;
+import TerritorioAlerta.domain.service.FindByIdUserService;
 
 // Configura Mockito para probar búsquedas sin inicializar Spring.
 @ExtendWith(MockitoExtension.class)

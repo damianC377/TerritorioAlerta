@@ -1,4 +1,4 @@
-package TerritorioAlerta.domain.service;
+package TerritorioAlerta.domain.service.mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import TerritorioAlerta.domain.model.Accident_report;
 import TerritorioAlerta.domain.port.Accident_reportPort;
+import TerritorioAlerta.domain.service.FindAccidentReportByIdService;
 
 // Activa Mockito para aislar las consultas del servicio.
 @ExtendWith(MockitoExtension.class)

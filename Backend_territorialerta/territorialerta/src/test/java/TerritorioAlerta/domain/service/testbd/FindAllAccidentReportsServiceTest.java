@@ -1,4 +1,4 @@
-package TerritorioAlerta.domain.service;
+package TerritorioAlerta.domain.service.testbd;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,6 +17,9 @@ import TerritorioAlerta.domain.model.User;
 import TerritorioAlerta.domain.model.Enums.Role;
 import TerritorioAlerta.domain.model.Enums.Status;
 import TerritorioAlerta.domain.model.Enums.TypeReport;
+import TerritorioAlerta.domain.service.CreateAccidentReportService;
+import TerritorioAlerta.domain.service.CreateUserService;
+import TerritorioAlerta.domain.service.FindAllAccidentReportsService;
 
 /** Pruebas JUnit del listado general usando PostgreSQL real. */
 // Carga la aplicación para ejecutar el servicio conectado al repositorio real.

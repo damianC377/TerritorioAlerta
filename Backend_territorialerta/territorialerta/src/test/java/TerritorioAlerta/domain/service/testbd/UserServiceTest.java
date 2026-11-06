@@ -1,4 +1,4 @@
-package TerritorioAlerta.domain.service;
+package TerritorioAlerta.domain.service.testbd;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import TerritorioAlerta.domain.model.User;
 import TerritorioAlerta.domain.model.Enums.Role;
+import TerritorioAlerta.domain.service.CreateUserService;
 
 /** Pruebas JUnit que crean usuarios usando el servicio y PostgreSQL reales. */
 // Carga el contexto real para conectar servicios, adaptadores y repositorios.

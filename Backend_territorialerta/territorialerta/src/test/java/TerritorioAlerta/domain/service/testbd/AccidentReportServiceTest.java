@@ -1,4 +1,4 @@
-package TerritorioAlerta.domain.service;
+package TerritorioAlerta.domain.service.testbd;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -18,6 +18,8 @@ import TerritorioAlerta.domain.model.User;
 import TerritorioAlerta.domain.model.Enums.Role;
 import TerritorioAlerta.domain.model.Enums.Status;
 import TerritorioAlerta.domain.model.Enums.TypeReport;
+import TerritorioAlerta.domain.service.CreateAccidentReportService;
+import TerritorioAlerta.domain.service.CreateUserService;
 
 /** Pruebas JUnit que guardan reportes usando el servicio y PostgreSQL reales. */
 // Inicia la aplicación para usar los adaptadores y repositorios reales.
